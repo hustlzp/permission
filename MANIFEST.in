@@ -1,0 +1,7 @@
+include CHANGES LICENSE
+recursive-include tests *
+recursive-include examples *
+recursive-include docs *
+recursive-exclude tests *.pyc
+recursive-exclude examples *.pyc
+recursive-exclude docs *.pyc
