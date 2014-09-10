@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='permission',
-    version='0.1.0',
+    version='0.1.1',
     author='Zhipeng Liu',
     author_email='hustlzp@qq.com',
     url='https://github.com/hustlzp/permission',

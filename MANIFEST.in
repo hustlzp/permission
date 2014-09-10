@@ -1,4 +1,4 @@
-include CHANGES LICENSE
+include CHANGES LICENSE README.rst
 recursive-include tests *
 recursive-include examples *
 recursive-include docs *
