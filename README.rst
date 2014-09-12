@@ -112,8 +112,10 @@ Then in templates::
 Inheritance
 -----------
 
-Need to say, inheritance here is not the same thing as Python class
+Need to say, inheritance here is not the same thing as Python class.
 inheritance, it's just means you can use RuleA as the base rule of RuleB.
+
+We achieve this by overriding ``base()``.
 
 Examples
 ~~~~~~~~
@@ -145,18 +147,6 @@ Let's say an administrator user should always be a user::
 
         def deny(self):
             abort(403)
-
-and then define permission::
-
-    # permission.py
-    from .rules import AdminRule
-
-
-    class AdminPermission(Permission):
-        def rule(self):
-            return AdminRule()
-
-and then use in view:
 
 Bitwise operations
 ------------------
