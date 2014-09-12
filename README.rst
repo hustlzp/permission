@@ -229,7 +229,7 @@ Then define permissions::
             super(TopicAdminPermission, self).__init__()
 
         def rule(self):
-            return AdminRule() | QuestionOwnerRule(self.topic_id)
+            return AdminRule() | TopicCreatorRule(self.topic_id)
 
 
 So we can use ``TopicAdminPermission`` in ``edit_topic`` view::
