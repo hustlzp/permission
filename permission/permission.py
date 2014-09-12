@@ -21,7 +21,9 @@ class Permission(object):
         return decorator
 
     def rule(self):
-        """Add rule to this permission, must be overrided."""
+        """Add rule to this permission.
+
+        Must be overrided."""
         raise NotImplementedError
 
     def check(self):
