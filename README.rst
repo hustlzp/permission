@@ -7,7 +7,7 @@ Features
 --------
 
 * **Simple**: all you need to do is subclassing ``Rule`` and ``Permission`` class.
-* **Flexible**: support rule 'inheritance' and bitwise operations(``&`` and ``|``) to build your own rules.
+* **Flexible**: support rule inheritance and bitwise operations(``&`` and ``|``) to build your own rules.
 
 Installation
 ------------
@@ -19,13 +19,13 @@ Installation
 Rule and Permission
 -------------------
 
-`Rule` has 3 methods which can be overrided:
+``Rule`` has 3 methods which can be overrided:
 
 * base(): define base rule.
 * check(): determine whether this rule should be passed or not.
 * deny(): will be executed when ``check()`` failed.
 
-You should always override ``check()` and ``deny()`` while overriding ``base()``
+You should always override ``check()`` and ``deny()`` while overriding ``base()``
 as needed.
 
 ``Permission`` has 1 methods which can be overrided:
@@ -34,7 +34,7 @@ as needed.
 
 You should always override ``rule()``.
 
-``Permission`` class has 2 instance methods you can used in codes:
+``Permission`` has 2 instance methods you can used in codes:
 
 * check(): call this to check rules of this permission
 * deny(): call this to execute codes when ``check()`` failed
@@ -42,8 +42,8 @@ You should always override ``rule()``.
 Usage
 -----
 
-First you need to define your own rules by subclassing ``Rule`` class, then
-override ``check()` and ``deny()`` methods::
+First you need to define your own rules by subclassing ``Rule``, then
+override ``check()`` and ``deny()``::
 
     # rules.py
     from flask import session, abort, flash
@@ -59,8 +59,8 @@ override ``check()` and ``deny()`` methods::
             flash('This action need the login')
             return redirect(url_for('signin'))
 
-Then you define permissions by subclassing ``Permission`` class and override
-``rule()`` method::
+Then you define permissions by subclassing ``Permission`` and override
+``rule()``::
 
     # permissions.py
     from permission import Permission
@@ -109,10 +109,10 @@ Then in templates::
         <a href="{{ url_for('new') }}">New</a>
     {% endif %}
 
-'Inheritance'
--------------
+Inheritance
+-----------
 
-Need to say, 'inheritance' here is not the same thing as Python class
+Need to say, inheritance here is not the same thing as Python class
 inheritance, it's just means you can use RuleA as the base rule of RuleB.
 
 Examples
