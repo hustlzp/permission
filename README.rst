@@ -6,10 +6,8 @@ Simple and flexible permission control for Flask app.
 Features
 --------
 
-* **Simple**: all you need to do is subclassing ``Rule`` and ``Permission`` class
-and override several methods.
-* **Flexible**: support rule 'inheritance' and bitwise operations(`&` and `|`)
-to build your own rules.
+* **Simple**: all you need to do is subclassing ``Rule`` and ``Permission`` class.
+* **Flexible**: support rule 'inheritance' and bitwise operations(``&`` and ``|``) to build your own rules.
 
 Installation
 ------------
@@ -21,30 +19,31 @@ Installation
 Rule and Permission
 -------------------
 
-`Rule` has 3 methods which can be overrided::
+`Rule` has 3 methods which can be overrided:
 
-    * base(): define base rule.
-    * check(): determine whether this rule should be passed or not.
-    * deny(): will be executed when `check()` failed.
+* base(): define base rule.
+* check(): determine whether this rule should be passed or not.
+* deny(): will be executed when ``check()`` failed.
 
-You should always override `check()` and `deny()` while overriding `base()` as needed.
+You should always override ``check()` and ``deny()`` while overriding ``base()``
+as needed.
 
-`Permission` has 1 methods which can be overrided::
+``Permission`` has 1 methods which can be overrided:
 
-    * rule(): define rules needed by this permission
+* rule(): define rules needed by this permission
 
-You should always override `rule()`.
+You should always override ``rule()``.
 
-`Permission` class has 2 instance methods you can used in codes::
+``Permission`` class has 2 instance methods you can used in codes:
 
-    * check(): call this to check rules of this permission
-    * deny(): call this to execute codes when `check()` failed
+* check(): call this to check rules of this permission
+* deny(): call this to execute codes when ``check()`` failed
 
 Usage
 -----
 
-First you need to define your own rules by subclassing `Rule` class, then override
-`check` and `deny` methods::
+First you need to define your own rules by subclassing ``Rule`` class, then
+override ``check()` and ``deny()`` methods::
 
     # rules.py
     from flask import session, abort, flash
@@ -60,8 +59,8 @@ First you need to define your own rules by subclassing `Rule` class, then overri
             flash('This action need the login')
             return redirect(url_for('signin'))
 
-Then you define permissions by subclassing `Permission` class and override `rule()`
-method::
+Then you define permissions by subclassing ``Permission`` class and override
+``rule()`` method::
 
     # permissions.py
     from permission import Permission
@@ -162,8 +161,8 @@ and then use in view:
 Bitwise operations
 ------------------
 
-* `RuleA & RuleB` means it will be passed when both RuleA and RuleB are passed
-* `RuleA | RuleB` means it will be passed either RuleA or RuleB is passed.
+* ``RuleA & RuleB`` means it will be passed when both RuleA and RuleB are passed
+* ``RuleA | RuleB`` means it will be passed either RuleA or RuleB is passed.
 
 Examples
 ~~~~~~~~
@@ -243,7 +242,7 @@ Then define permissions::
             return AdminRule() | QuestionOwnerRule(self.topic_id)
 
 
-So we can use `TopicAdminPermission` in `edit_topic` view::
+So we can use ``TopicAdminPermission`` in ``edit_topic`` view::
 
     from .permissions import TopicAdminPermission
 
