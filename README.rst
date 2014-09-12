@@ -42,7 +42,7 @@ You should always override ``rule()``.
 Usage
 -----
 
-First you need to define your own rules by subclassing ``Rule``, then
+First you need to define your own rules by subclassing ``Rule`` then
 override ``check()`` and ``deny()``::
 
     # rules.py
@@ -112,7 +112,7 @@ Then in templates::
 Inheritance
 -----------
 
-Need to say, inheritance here is not the same thing as Python class.
+Need to say, inheritance here is not the same thing as Python class
 inheritance, it's just means you can use RuleA as the base rule of RuleB.
 
 We achieve this by overriding ``base()``.
