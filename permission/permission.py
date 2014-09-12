@@ -10,7 +10,7 @@ class Permission(object):
         self.rule = rule
 
     def __call__(self, func):
-        """Give the ability to use as view decorator."""
+        """Give Permission instance the ability to be used as view decorator."""
 
         @wraps(func)
         def decorator(*args, **kwargs):
@@ -102,7 +102,7 @@ class Rule(object):
 
     @staticmethod
     def _and(rules_list_pre, rules_list_pro):
-        """Serial merge rule_list_pre to rule_list_pro"""
+        """Serial merge rule_list_pre to rule_list_pro."""
         return [rule_pre + rule_pro
                 for rule_pre in rules_list_pre
                 for rule_pro in rules_list_pro]
