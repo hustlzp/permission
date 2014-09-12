@@ -6,21 +6,22 @@ Simple and flexible permission control for Flask app.
 Features
 --------
 
-* **Simple**: all you need to do is subclassing `Rule` and `Permission` class
- and override several methods.
+* **Simple**: all you need to do is subclassing ``Rule`` and ``Permission`` class
+and override several methods.
 * **Flexible**: support rule 'inheritance' and bitwise operations(`&` and `|`)
- to build your own rules.
+to build your own rules.
 
 Installation
 ------------
 
-    $ pip install permission
+::
 
+    $ pip install permission
 
 Rule and Permission
 -------------------
 
-`Rule` has 3 methods which can be overrided:
+`Rule` has 3 methods which can be overrided::
 
     * base(): define base rule.
     * check(): determine whether this rule should be passed or not.
@@ -28,13 +29,13 @@ Rule and Permission
 
 You should always override `check()` and `deny()` while overriding `base()` as needed.
 
-`Permission` has 1 methods which can be overrided:
+`Permission` has 1 methods which can be overrided::
 
     * rule(): define rules needed by this permission
 
 You should always override `rule()`.
 
-`Permission` class has 2 instance methods you can used in codes:
+`Permission` class has 2 instance methods you can used in codes::
 
     * check(): call this to check rules of this permission
     * deny(): call this to execute codes when `check()` failed
@@ -43,7 +44,7 @@ Usage
 -----
 
 First you need to define your own rules by subclassing `Rule` class, then override
- `check` and `deny` methods::
+`check` and `deny` methods::
 
     # rules.py
     from flask import session, abort, flash
@@ -60,7 +61,7 @@ First you need to define your own rules by subclassing `Rule` class, then overri
             return redirect(url_for('signin'))
 
 Then you define permissions by subclassing `Permission` class and override `rule()`
- method::
+method::
 
     # permissions.py
     from permission import Permission
@@ -168,7 +169,7 @@ Examples
 ~~~~~~~~
 
 Let's say we need to build a forum with Flask.
-And only the topic creator and administrator user can edit a topic:
+Only the topic creator and administrator user can edit a topic:
 
 First let's define rules::
 
