@@ -96,7 +96,7 @@ class Rule(object):
     def deny(self):
         """Codes to be execute when check() failed.
 
-        Must be override.
+        Must be overrided.
         """
         raise NotImplementedError()
 
