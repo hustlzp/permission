@@ -151,7 +151,7 @@ Let's say an administrator user should always be a user::
 Bitwise operations
 ------------------
 
-* ``RuleA & RuleB`` means it will be passed when both RuleA and RuleB are passed
+* ``RuleA & RuleB`` means it will be passed when both RuleA and RuleB are passed.
 * ``RuleA | RuleB`` means it will be passed either RuleA or RuleB is passed.
 
 Examples
