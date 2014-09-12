@@ -28,7 +28,7 @@ Rule and Permission
 You should always override ``check()`` and ``deny()`` while overriding ``base()``
 as needed.
 
-``Permission`` has 1 methods which can be overrided:
+``Permission`` has 1 method which can be overrided:
 
 * rule(): define rules needed by this permission
 
