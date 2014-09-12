@@ -34,7 +34,7 @@ as needed.
 
 You should always override ``rule()``.
 
-``Permission`` has 2 instance methods you can used in codes:
+``Permission`` has 2 instance methods you can use in codes:
 
 * check(): call this to check rules of this permission
 * deny(): call this to execute codes when ``check()`` failed
