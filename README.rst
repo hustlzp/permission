@@ -71,7 +71,10 @@ Then you define permissions by subclassing ``Permission`` and override
         def role(self):
             return UserRole()
 
-Use as view decorator::
+Use as view decorator
+~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     from .permissions import UserPermission
 
@@ -81,7 +84,10 @@ Use as view decorator::
         """User settings page, only accessable for sign-in user."""
         return render_template('settings.html')
 
-Use in view codes::
+Use in view codes
+~~~~~~~~~~~~~~~~~
+
+::
 
     from .permissions import UserPermission
 
@@ -92,8 +98,10 @@ Use in view codes::
             return permission.deny()
         return render_template('settings.html')
 
-Use in Jinja2 templates, first you need to inject your defined
-permissions to template context::
+Use in Jinja2 templates
+~~~~~~~~~~~~~~~~~~~~~~~
+
+First you need to inject your defined permissions to template context::
 
     from .permissions import UserPermission
 
@@ -103,7 +111,7 @@ permissions to template context::
             permissions=permissions
         )
 
-Then in templates::
+then in templates::
 
     {% if permissions.UserPermission().check() %}
         <a href="{{ url_for('new') }}">New</a>
