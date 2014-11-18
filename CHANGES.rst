@@ -1,6 +1,13 @@
 Permission Changelog
 ====================
 
+Version 0.2.0
+-------------
+
+Rename rule to role.
+
+Update README.rst.
+
 Version 0.1.2
 -------------
 
@@ -10,7 +17,6 @@ Version 0.1.1
 -------------
 
 Add README.rst to the installation tarball.
-
 
 Version 0.1
 -----------
