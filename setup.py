@@ -7,7 +7,7 @@ setup(
     author_email='hustlzp@qq.com',
     url='https://github.com/hustlzp/permission',
     packages=['permission'],
-    license='LICENSE',
+    license='MIT',
     description='Simple and flexible permission control for Flask app.',
     long_description=open('README.rst').read(),
     classifiers=[
