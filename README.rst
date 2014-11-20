@@ -46,7 +46,7 @@ First you need to define your own roles by subclassing ``Role`` then
 override ``check()`` and ``deny()``::
 
     # roles.py
-    from flask import session, abort, flash
+    from flask import session, flash, redirect, url_for
     from permission import Role
 
     class UserRole(Role):
@@ -131,7 +131,7 @@ Examples
 Let's say an administrator user should always be a user::
 
     # roles.py
-    from flask import session, abort, flash
+    from flask import session, abort, flash, redirect, url_for
     from permission import Role
 
 
@@ -171,7 +171,7 @@ Only the topic creator and administrator user can edit a topic:
 First let's define roles::
 
     # roles.py
-    from flask import session, abort, flash
+    from flask import session, abort, flash, redirect, url_for
     from permission import Role
     from .models import User, Topic
 
