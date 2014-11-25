@@ -9,7 +9,7 @@ setup(
     packages=['permission'],
     license='MIT',
     description='Simple and flexible permission control for Flask app.',
-    long_description=open('README.rst').read(),
+    long_description=open('README.md').read(),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
