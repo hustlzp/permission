@@ -125,9 +125,6 @@ inheritance, it's just means you can use RoleA as the base role of RoleB.
 
 We achieve this by overriding ``base()``.
 
-Examples
-~~~~~~~~
-
 Let's say an administrator user should always be a user::
 
     # roles.py
@@ -161,9 +158,6 @@ Bitwise operations
 
 * ``RoleA & RoleB`` means it will be passed when both RoleA and RoleB are passed.
 * ``RoleA | RoleB`` means it will be passed either RoleA or RoleB is passed.
-
-Examples
-~~~~~~~~
 
 Let's say we need to build a forum with Flask.
 Only the topic creator and administrator user can edit a topic:
