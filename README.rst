@@ -226,7 +226,7 @@ Then define permissions::
 
 So we can use ``TopicAdminPermission`` in ``edit_topic`` view::
 
-.. code:: python
+    .. code:: python
 
     from .permissions import TopicAdminPermission
 
