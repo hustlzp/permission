@@ -126,7 +126,7 @@ then in templates:
 {% endif %}
 ````
 
-##Inheritance
+##Role Inheritance
 
 Need to say, inheritance here is not the same thing as Python class
 inheritance, it's just means you can use RoleA as the base role of RoleB.
@@ -163,7 +163,7 @@ class AdminRole(Role):
         abort(403)
 ```
 
-##Bitwise operations
+##Role bitwise operations
 
 * `RoleA & RoleB` means it will be passed when both RoleA and RoleB are passed.
 * `RoleA | RoleB` means it will be passed either RoleA or RoleB is passed.
