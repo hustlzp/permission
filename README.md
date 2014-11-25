@@ -72,7 +72,9 @@ class UserPermission(Permission):
         return UserRole()
 ```
 
-**Use as view decorator**:
+There are 3 ways to use the `UserPermission`:
+
+**1. Use as view decorator**
 
 ```py
 from .permissions import UserPermission
@@ -84,7 +86,7 @@ def settings():
     return render_template('settings.html')
 ```
 
-**Use in view codes**:
+**2. Use in view codes**
 
 ```py
 from .permissions import UserPermission
@@ -97,7 +99,7 @@ def settings():
     return render_template('settings.html')
 ```
 
-**Use in Jinja2 templates**:
+**3. Use in Jinja2 templates**
 
 First you need to inject your defined permissions to template context:
 
