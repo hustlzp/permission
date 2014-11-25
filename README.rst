@@ -221,16 +221,6 @@ Then define permissions::
     from permission import Permission
 
 
-    class UserPermission(Permission):
-        def role(self):
-            return UserRole()
-
-
-    class AdminPermission(Permission):
-        def role(self):
-            return AdminRole()
-
-
     class TopicAdminPermission(Permission):
         def __init__(self, topic_id):
             self.topic_id = topic_id
