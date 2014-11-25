@@ -74,7 +74,7 @@ class UserPermission(Permission):
         return UserRole()
 ```
 
-There are 3 ways to use the `UserPermission`:
+There are 3 ways to use the `UserPermission` defined above:
 
 **1. Use as view decorator**
 
@@ -171,7 +171,7 @@ class AdminRole(Role):
 Let's say we need to build a forum with Flask.
 Only the topic creator and administrator user can edit a topic:
 
-First let's define roles:
+First define roles:
 
 ```py
 # roles.py
@@ -220,7 +220,7 @@ class TopicCreatorRole(Role):
         abort(403)
 ```
 
-Then define permissions:
+then define permissions:
 
 ```py
 # permissions.py
@@ -236,7 +236,7 @@ class TopicAdminPermission(Permission):
         return AdminRole() | TopicCreatorRole(self.topic_id)
 ```
 
-So we can use `TopicAdminPermission` in `edit_topic` view:
+so we can use `TopicAdminPermission` in `edit_topic` view:
 
 ```py
 from .permissions import TopicAdminPermission
