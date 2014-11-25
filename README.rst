@@ -226,6 +226,8 @@ Then define permissions::
 
 So we can use ``TopicAdminPermission`` in ``edit_topic`` view::
 
+.. code:: python
+
     from .permissions import TopicAdminPermission
 
     @app.route('topic/<int:topic_id>/edit')
