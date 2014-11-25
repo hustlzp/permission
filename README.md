@@ -55,7 +55,7 @@ class UserRole(Role):
 
     def deny(self):
         """When no user signed in, redirect to signin page."""
-        flash('This action need the login')
+        flash('Sign in first.')
         return redirect(url_for('signin'))
 ```
 
@@ -146,7 +146,7 @@ class UserRole(Role):
         return 'user_id' in session
 
     def deny(self):
-        flash('This action need the login')
+        flash('Sign in first.')
         return redirect(url_for('signin'))
 
 
@@ -187,7 +187,7 @@ class UserRole(Role):
 
     def deny(self):
         """When no user signed in, redirect to signin page."""
-        flash('This action need the login')
+        flash('Sign in first.')
         return redirect(url_for('signin'))
 
 
