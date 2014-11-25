@@ -37,8 +37,7 @@ You should always override `role()`.
 * check(): call this to check role of this permission
 * deny(): call this to execute codes when `check()` failed
 
-Usage
------
+##Usage
 
 First you need to define your own roles by subclassing `Role` then
 override `check()` and `deny()`:
@@ -73,7 +72,7 @@ class UserPermission(Permission):
         return UserRole()
 ```
 
-###Use as view decorator
+**Use as view decorator**:
 
 ```py
 from .permissions import UserPermission
@@ -85,7 +84,7 @@ def settings():
     return render_template('settings.html')
 ```
 
-###Use in view codes
+**Use in view codes**:
 
 ```py
 from .permissions import UserPermission
@@ -98,7 +97,7 @@ def settings():
     return render_template('settings.html')
 ```
 
-###Use in Jinja2 templates
+**Use in Jinja2 templates**:
 
 First you need to inject your defined permissions to template context:
 
