@@ -163,7 +163,7 @@ class AdminRole(Role):
         abort(403)
 ```
 
-##Role bitwise operations
+##Role Bitwise Operations
 
 * `RoleA & RoleB` means it will be passed when both RoleA and RoleB are passed.
 * `RoleA | RoleB` means it will be passed either RoleA or RoleB is passed.
