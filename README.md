@@ -47,6 +47,7 @@ override `check()` and `deny()`:
 from flask import session, flash, redirect, url_for
 from permission import Role
 
+
 class UserRole(Role):
     def check(self):
         """Check if there is a user signed in."""
@@ -66,6 +67,7 @@ Then you define permissions by subclassing `Permission` and override `role()`:
 from permission import Permission
 from .roles import UserRole
 
+
 class UserPermission(Permission):
     """Only signin user has this permission."""
     def role(self):
@@ -79,6 +81,7 @@ There are 3 ways to use the `UserPermission`:
 ```py
 from .permissions import UserPermission
 
+
 @app.route('/settings')
 @UserPermission()
 def settings():
@@ -90,6 +93,7 @@ def settings():
 
 ```py
 from .permissions import UserPermission
+
 
 @app.route('/settions')
 def settings():
@@ -105,6 +109,7 @@ First you need to inject your defined permissions to template context:
 
 ```py
 from .permissions import UserPermission
+
 
 @app.context_processor
 def inject_vars():
@@ -236,6 +241,7 @@ So we can use `TopicAdminPermission` in `edit_topic` view:
 ```py
 from .permissions import TopicAdminPermission
 
+
 @app.route('topic/<int:topic_id>/edit')
 def edit_topic(topic_id):
     topic = Topic.query.get_or_404(topic_id)
@@ -243,4 +249,4 @@ def edit_topic(topic_id):
     if not permission.check():
         return permission.deny()
     ...
-````
+```
