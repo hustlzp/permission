@@ -108,7 +108,7 @@ def settings():
 First you need to inject your defined permissions to template context:
 
 ```py
-from .permissions import UserPermission
+from . import permissions
 
 
 @app.context_processor
