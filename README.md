@@ -1,6 +1,7 @@
 Permission
 ==========
 [![Latest Version](http://img.shields.io/pypi/v/permission.svg)](https://pypi.python.org/pypi/permission)
+[![The MIT License](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hustlzp/permission/blob/master/LICENSE)
 
 Simple and flexible permission control for Flask app.
 
