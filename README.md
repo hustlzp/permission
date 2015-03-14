@@ -1,5 +1,6 @@
 Permission
 ==========
+[![Latest Version](http://img.shields.io/pypi/v/permission.svg)](https://pypi.python.org/pypi/permission)
 
 Simple and flexible permission control for Flask app.
 
