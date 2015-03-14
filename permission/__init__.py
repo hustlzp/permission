@@ -1,3 +1,3 @@
-from .permission import Permission, Role
+from .permission import Permission, Rule
 
-__all__ = ('Permission', 'Role')
+__all__ = ('Permission', 'Rule')

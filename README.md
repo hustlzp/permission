@@ -5,8 +5,8 @@ Simple and flexible permission control for Flask app.
 
 ##Features
 
-* **Simple**: all you need to do is subclassing `Role` and `Permission` class.
-* **Flexible**: support role inheritance and bitwise operations(`&` and `|`) to build your own roles.
+* **Simple**: all you need to do is subclassing `Rule` and `Permission` class.
+* **Flexible**: support rule inheritance and bitwise operations(`&` and `|`) to build your own rules.
 
 ##Installation
 
@@ -14,12 +14,12 @@ Simple and flexible permission control for Flask app.
 $ pip install permission
 ```
 
-##Role
+##Rule
 
-`Role` has 3 methods which can be overrided:
+`Rule` has 3 methods which can be overrided:
 
-* base(): define base role.
-* check(): determine whether this role should be passed or not.
+* base(): define base rule.
+* check(): determine whether this rule should be passed or not.
 * deny(): will be executed when `check()` failed.
 
 You should always override `check()` and `deny()` while overriding `base()` as needed.
@@ -28,27 +28,27 @@ You should always override `check()` and `deny()` while overriding `base()` as n
 
 `Permission` has 1 method which can be overrided:
 
-* role(): define role needed by this permission
+* rule(): define rule needed by this permission
 
-You should always override `role()`.
+You should always override `rule()`.
 
 `Permission` has 2 instance methods you can use in codes:
 
-* check(): call this to check role of this permission
+* check(): call this to check rule of this permission
 * deny(): call this to execute codes when `check()` failed
 
 ##Usage
 
-First you need to define your own roles by subclassing `Role` then
+First you need to define your own rules by subclassing `Rule` then
 override `check()` and `deny()`:
 
 ```py
-# roles.py
+# rules.py
 from flask import session, flash, redirect, url_for
-from permission import Role
+from permission import Rule
 
 
-class UserRole(Role):
+class UserRule(Rule):
     def check(self):
         """Check if there is a user signed in."""
         return 'user_id' in session
@@ -59,19 +59,19 @@ class UserRole(Role):
         return redirect(url_for('signin'))
 ```
 
-Then you define permissions by subclassing `Permission` and override `role()`:
+Then you define permissions by subclassing `Permission` and override `rule()`:
 
 
 ```py
 # permissions.py
 from permission import Permission
-from .roles import UserRole
+from .rules import UserRule
 
 
 class UserPermission(Permission):
     """Only signin user has this permission."""
-    def role(self):
-        return UserRole()
+    def rule(self):
+        return UserRule()
 ```
 
 There are 3 ways to use the `UserPermission` defined above:
@@ -126,22 +126,22 @@ then in templates:
 {% endif %}
 ````
 
-##Role Inheritance
+##Rule Inheritance
 
 Need to say, inheritance here is not the same thing as Python class
-inheritance, it's just means you can use RoleA as the base role of RoleB.
+inheritance, it's just means you can use RuleA as the base rule of RuleB.
 
 We achieve this by overriding `base()`.
 
 Let's say an administrator user should always be a user:
 
 ```py
-# roles.py
+# rules.py
 from flask import session, abort, flash, redirect, url_for
-from permission import Role
+from permission import Rule
 
 
-class UserRole(Role):
+class UserRule(Rule):
     def check(self):
         return 'user_id' in session
 
@@ -150,9 +150,9 @@ class UserRole(Role):
         return redirect(url_for('signin'))
 
 
-class AdminRole(Role):
+class AdminRule(Rule):
     def base(self):
-        return UserRole()
+        return UserRule()
 
     def check(self):
         user_id = int(session['user_id'])
@@ -163,24 +163,24 @@ class AdminRole(Role):
         abort(403)
 ```
 
-##Role Bitwise Operations
+##Rule Bitwise Operations
 
-* `RoleA & RoleB` means it will be passed when both RoleA and RoleB are passed.
-* `RoleA | RoleB` means it will be passed either RoleA or RoleB is passed.
+* `RuleA & RuleB` means it will be passed when both RuleA and RuleB are passed.
+* `RuleA | RuleB` means it will be passed either RuleA or RuleB is passed.
 
 Let's say we need to build a forum with Flask.
 Only the topic creator and administrator user can edit a topic:
 
-First define roles:
+First define rules:
 
 ```py
-# roles.py
+# rules.py
 from flask import session, abort, flash, redirect, url_for
-from permission import Role
+from permission import Rule
 from .models import User, Topic
 
 
-class UserRole(Role):
+class UserRule(Rule):
     def check(self):
         """Check if there is a user signed in."""
         return 'user_id' in session
@@ -191,9 +191,9 @@ class UserRole(Role):
         return redirect(url_for('signin'))
 
 
-class AdminRole(Role):
+class AdminRule(Rule):
     def base(self):
-        return UserRole()
+        return UserRule()
 
     def check(self):
         user_id = int(session['user_id'])
@@ -204,13 +204,13 @@ class AdminRole(Role):
         abort(403)
 
 
-class TopicCreatorRole(Role):
+class TopicCreatorRule(Rule):
     def __init__(self, topic_id):
         self.topic_id = topic_id
-        super(TopicCreatorRole, self).__init__()
+        super(TopicCreatorRule, self).__init__()
 
     def base(self):
-        return UserRole()
+        return UserRule()
 
     def check(self):
         topic = Topic.query.filter(Topic.id == self.topic_id).first()
@@ -232,8 +232,8 @@ class TopicAdminPermission(Permission):
         self.topic_id = topic_id
         super(TopicAdminPermission, self).__init__()
 
-    def role(self):
-        return AdminRole() | TopicCreatorRole(self.topic_id)
+    def rule(self):
+        return AdminRule() | TopicCreatorRule(self.topic_id)
 ```
 
 so we can use `TopicAdminPermission` in `edit_topic` view:
