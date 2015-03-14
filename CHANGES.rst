@@ -1,6 +1,11 @@
 Permission Changelog
 ====================
 
+Version 0.3.0
+-------------
+
+Rename role to rule.
+
 Version 0.2.1
 -------------
 
