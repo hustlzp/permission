@@ -207,16 +207,15 @@ class AdminRule(Rule):
 
 
 class TopicCreatorRule(Rule):
-    def __init__(self, topic_id):
-        self.topic_id = topic_id
+    def __init__(self, topic):
+        self.topic = topic
         super(TopicCreatorRule, self).__init__()
 
     def base(self):
         return UserRule()
 
     def check(self):
-        topic = Topic.query.filter(Topic.id == self.topic_id).first()
-        return topic and topic.user_id == session['user_id']
+        return topic.user_id == session['user_id']
 
     def deny(self):
         abort(403)
@@ -230,12 +229,12 @@ from permission import Permission
 
 
 class TopicAdminPermission(Permission):
-    def __init__(self, topic_id):
-        self.topic_id = topic_id
+    def __init__(self, topic):
+        self.topic = topic
         super(TopicAdminPermission, self).__init__()
 
     def rule(self):
-        return AdminRule() | TopicCreatorRule(self.topic_id)
+        return AdminRule() | TopicCreatorRule(self.topic)
 ```
 
 so we can use `TopicAdminPermission` in `edit_topic` view:
@@ -247,7 +246,7 @@ from .permissions import TopicAdminPermission
 @app.route('topic/<int:topic_id>/edit')
 def edit_topic(topic_id):
     topic = Topic.query.get_or_404(topic_id)
-    permission = TopicAdminPermission(topic_id)
+    permission = TopicAdminPermission(topic)
     if not permission.check():
         return permission.deny()
     ...
