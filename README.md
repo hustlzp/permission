@@ -117,6 +117,13 @@ def settings():
         return render_template('settings.html')
 ```
 
+**Note**: if you don't raise an exception when the permission check failed (in other words,
+a rule's ``deny()`` will be called), ``PermissionDeniedException`` will be raised in order to stop the execution
+of the with-body codes. By the way, you can import this exception as needed:
+
+```py
+from permission import PermissionDeniedException
+```
 
 **4. Use in Jinja2 templates**
 

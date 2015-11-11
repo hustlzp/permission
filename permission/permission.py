@@ -2,7 +2,7 @@
 from functools import wraps
 
 
-class PermissionDenied(RuntimeError):
+class PermissionDeniedException(RuntimeError):
     """Permission denied to the resource."""
 
 
@@ -35,7 +35,7 @@ class Permission(object):
             except Exception, e:
                 raise e
             else:
-                raise PermissionDenied()
+                raise PermissionDeniedException()
 
     def __exit__(self, exc_type, exc_value, traceback):
         """Exit the runtime context.
