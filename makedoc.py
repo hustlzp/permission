@@ -1,9 +1,4 @@
-import pandoc
+import pypandoc
 
-pandoc.core.PANDOC_PATH = '/usr/local/bin/pandoc'
-
-doc = pandoc.Document()
-doc.markdown = open('README.md').read()
-f = open('README.rst', 'w+')
-f.write(doc.rst)
-f.close()
+with open('README.rst', 'w+') as f:
+    f.write(pypandoc.convert('README.md', 'rst'))
