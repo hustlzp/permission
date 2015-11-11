@@ -264,3 +264,7 @@ def edit_topic(topic_id):
         return permission.deny()
     ...
 ```
+
+##License
+
+MIT
