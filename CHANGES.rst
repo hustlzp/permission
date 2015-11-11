@@ -1,6 +1,11 @@
 Permission Changelog
 ====================
 
+Version 0.4.0
+-------------
+
+Add ``with`` statement support.
+
 Version 0.3.0
 -------------
 
