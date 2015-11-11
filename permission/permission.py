@@ -32,7 +32,7 @@ class Permission(object):
         if not self.check():
             try:
                 self.deny()
-            except Exception, e:
+            except Exception as e:
                 raise e
             else:
                 raise PermissionDeniedException()
