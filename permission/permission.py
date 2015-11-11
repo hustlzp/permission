@@ -20,6 +20,20 @@ class Permission(object):
 
         return decorator
 
+    def __enter__(self):
+        """Enter the runtime context checking whether there is enough
+        permission for this.
+
+        This is a suplimentary method for with-statement."""
+        if not self.check():
+            self.deny()
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        """Exit the runtime context.
+
+        This is a suplimentary method for with-statement."""
+        pass
+
     def rule(self):
         """Add rule to this permission.
 
