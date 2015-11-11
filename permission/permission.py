@@ -2,6 +2,10 @@
 from functools import wraps
 
 
+class PermissionDenied(RuntimeError):
+    """Permission denied to the resource."""
+
+
 class Permission(object):
     def __init__(self):
         rule = self.rule()
@@ -26,7 +30,12 @@ class Permission(object):
 
         This is a suplimentary method for with-statement."""
         if not self.check():
-            self.deny()
+            try:
+                self.deny()
+            except Exception, e:
+                raise e
+            else:
+                raise PermissionDenied()
 
     def __exit__(self, exc_type, exc_value, traceback):
         """Exit the runtime context.
