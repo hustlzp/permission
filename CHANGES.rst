@@ -1,6 +1,11 @@
 Permission Changelog
 ====================
 
+Version 0.4.1
+-------------
+
+Fix exception syntax to support Python 3.x.
+
 Version 0.4.0
 -------------
 
