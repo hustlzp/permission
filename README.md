@@ -5,18 +5,18 @@ Permission
 
 Simple and flexible permission control for Flask app.
 
-##Features
+## Features
 
 * **Simple**: all you need to do is subclassing `Rule` and `Permission` class.
 * **Flexible**: support rule inheritance and bitwise operations(`&` and `|`) to build your own rules.
 
-##Installation
+## Installation
 
 ```
 $ pip install permission
 ```
 
-##Rule
+## Rule
 
 `Rule` has 3 methods which can be overrided:
 
@@ -26,7 +26,7 @@ $ pip install permission
 
 You should always override `check()` and `deny()` while overriding `base()` as needed.
 
-##Permission
+## Permission
 
 `Permission` has 1 method which can be overrided:
 
@@ -39,7 +39,7 @@ You should always override `rule()`.
 * check(): call this to check rule of this permission
 * deny(): call this to execute codes when `check()` failed
 
-##Usage
+## Usage
 
 First you need to define your own rules by subclassing `Rule` then
 override `check()` and `deny()`:
@@ -148,7 +148,7 @@ then in templates:
 {% endif %}
 ````
 
-##Rule Inheritance
+## Rule Inheritance
 
 Need to say, inheritance here is not the same thing as Python class
 inheritance, it's just means you can use RuleA as the base rule of RuleB.
@@ -185,7 +185,7 @@ class AdminRule(Rule):
         abort(403)
 ```
 
-##Rule Bitwise Operations
+## Rule Bitwise Operations
 
 * `RuleA & RuleB` means it will be passed when both RuleA and RuleB are passed.
 * `RuleA | RuleB` means it will be passed either RuleA or RuleB is passed.
@@ -272,6 +272,6 @@ def edit_topic(topic_id):
     ...
 ```
 
-##License
+## License
 
-MIT
+MIT -- You can what you want with this code.
