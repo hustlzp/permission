@@ -107,3 +107,6 @@ _venv
 
 # pycharm and others
 .idea
+
+# project specific
+README.rst
