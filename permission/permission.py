@@ -37,7 +37,7 @@ class Permission(object):
             else:
                 raise PermissionDeniedException()
 
-    def __exit__(self, exc_type, exc_value, traceback):
+    def __exit__(self, exc_type, exc_value, traceback):  # pragma: nocover
         """Exit the runtime context.
 
         This is a suplimentary method for with-statement."""
@@ -99,7 +99,7 @@ class Rule(object):
         """Run self.rules_list.
 
         Return True if one rule channel has been passed.
-        Otherwise return False and the deny() method of the last failed rule.
+        Otherwise return False and the ``deny`` method of the first failed rule.
         """
         failed_result = None
         for rule in self.rules_list:
