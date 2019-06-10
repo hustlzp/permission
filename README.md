@@ -274,4 +274,4 @@ def edit_topic(topic_id):
 
 ## License
 
-MIT -- You can what you want with this code.
+MIT
